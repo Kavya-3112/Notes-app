@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const methodOverride = require("method-override");
-const connectDB = require('./server/config/db');
+const connectDB = require('./backend/server/config/db');
 const session = require('express-session');
 const passport = require('passport');
 const MongoStore = require('connect-mongo');
@@ -32,19 +32,20 @@ app.use(methodOverride("_method"));
 connectDB();  
 
 // Static Files
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/frontend/public'));
 
 // Templating Engine
 app.use(expressLayouts);
-app.set('layout', './layouts/main');
+app.set('layout', './frontend/views/layouts/main');
+app.set('views', __dirname + '/frontend/views');
 app.set('view engine', 'ejs');
 
 
 
 // Routes
-app.use('/', require('./server/routes/auth'));
-app.use('/', require('./server/routes/index'));
-app.use('/', require('./server/routes/dashboard'));
+app.use('/', require('./backend/server/routes/auth'));
+app.use('/', require('./backend/server/routes/index'));
+app.use('/', require('./backend/server/routes/dashboard'));
 
 // Handle 404
 app.get('*', function(req, res) {
