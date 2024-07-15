@@ -31,7 +31,7 @@ exports.dashboard = async (req, res) => {
     .limit(perPage)
     .exec(); 
 
-    const count = await Note.countDocuments(); // Update to countDocuments
+    const count = await Note.countDocuments();
 
     res.render('dashboard/index', {
       userName: req.user.firstName,

@@ -2,10 +2,9 @@
   "name": "notes-app",
   "version": "1.0.0",
   "main": "app.js",
-
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"nodemon"
+    "start": "nodemon"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +19,8 @@
     "express-session": "^1.18.0",
     "method-override": "^3.0.0",
     "mongoose": "^8.5.0",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.9.14",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0"
   }
