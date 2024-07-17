@@ -35,30 +35,7 @@
     <% } %>
   </div>
 
-  <!-- New Reminder Form -->
-  <div class="row mt-5">
-    <div class="col-12">
-      <h2>Set a Reminder</h2>
-      <form id="reminderForm">
-        <div class="mb-3">
-          <label for="reminderMessage" class="form-label">Reminder Message</label>
-          <input type="text" class="form-control" id="reminderMessage" name="message" required>
-        </div>
-        <div class="mb-3">
-          <label for="notificationType" class="form-label">Notification Type</label>
-          <select class="form-control" id="notificationType" name="notificationType" required>
-            <option value="email">Email</option>
-            <option value="sms">SMS</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="notificationTime" class="form-label">Notification Time</label>
-          <input type="datetime-local" class="form-control" id="notificationTime" name="notificationTime" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Set Reminder</button>
-      </form>
-    </div>
-  </div>
+
 
   <!-- Existing pagination content -->
   <% if(notes.length > 0) { %>
@@ -93,24 +70,3 @@
   <% } %>
 </div>
 
-<script>
-  document.getElementById('reminderForm').addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData.entries());
-
-    const response = await fetch('/dashboard/reminders', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    });
-
-    if (response.ok) {
-      alert('Reminder set successfully!');
-    } else {
-      alert('Failed to set reminder.');
-    }
-  });
-</script>
